@@ -356,6 +356,7 @@
     function objectURLToBlob(url, callback) {
         var http = new XMLHttpRequest();
         http.open("GET", url, true);
+        http.setRequestHeader('Origin', window.location.origin);
         http.responseType = "blob";
         http.onload = function(e) {
             if (this.status == 200 || this.status === 0) {
@@ -404,6 +405,7 @@
                     http = null;
                 };
                 http.open("GET", img.src, true);
+                http.setRequestHeader('Origin', window.location.origin);
                 http.responseType = "arraybuffer";
                 http.send(null);
             }
